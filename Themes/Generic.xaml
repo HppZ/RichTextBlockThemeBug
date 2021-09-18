@@ -3,11 +3,13 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:App6">
 
-    <Style TargetType="local:RichText" >
+    <Style TargetType="local:RichText">
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="local:RichText">
-                    <RichTextBlock x:Name="RichTextBlock"></RichTextBlock>
+                    <RichTextBlock x:Name="RichTextBlock_Part">
+                        <Paragraph />
+                    </RichTextBlock>
                 </ControlTemplate>
             </Setter.Value>
         </Setter>

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using Windows.UI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Data;
@@ -24,24 +25,23 @@ namespace App6
 
         protected override void OnApplyTemplate()
         {
+            base.OnApplyTemplate();
 
             if (_richTextBlock == null)
             {
-                _richTextBlock = GetTemplateChild("RichTextBlock") as RichTextBlock;
+                _richTextBlock = GetTemplateChild("RichTextBlock_Part") as RichTextBlock;
             }
-
-            var _curBlock = new Paragraph();
-            _richTextBlock.Blocks.Add(_curBlock);
-
-            var inline = new Hyperlink()
+            var hyperlink = new Hyperlink()
             {
-                UnderlineStyle = UnderlineStyle.None
+                UnderlineStyle = UnderlineStyle.None,
             };
-            inline.Inlines.Add(new Run() { Text = "@one" });
+            hyperlink.Inlines.Add(new Run() { Text = "one" });
 
-            _curBlock.Inlines.Add(inline);
+            var paragraph = new Paragraph();
+            paragraph.Inlines.Add(hyperlink);
 
-            base.OnApplyTemplate();
+
+            _richTextBlock.Blocks.Add(paragraph);
         }
     }
 }
